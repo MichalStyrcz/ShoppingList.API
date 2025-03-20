@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "Hkvr3+mMNXk=",
+  "success": true,
+  "projectFilePath": "/Users/michalstyrcz/Git/ShoppingList.API/ShoppingList.API/ShoppingList.API.csproj",
+  "expectedPackageFiles": [
+    "/Users/michalstyrcz/.nuget/packages/microsoft.aspnetcore.openapi/9.0.1/microsoft.aspnetcore.openapi.9.0.1.nupkg.sha512",
+    "/Users/michalstyrcz/.nuget/packages/microsoft.openapi/1.6.17/microsoft.openapi.1.6.17.nupkg.sha512"
+  ],
+  "logs": []
+}
