@@ -14,11 +14,16 @@ public class FileService
 
     public List<Product> LoadData()
     {
-        StreamReader file = File.OpenText(FilePath);
-        string content = file.ReadToEnd();
-        file.Close();
-        List<Product>? result = JsonSerializer.Deserialize<List<Product>>(content);
-        return result ?? [];
+        if (File.Exists(FilePath))
+        {
+            StreamReader file = File.OpenText(FilePath);
+            string content = file.ReadToEnd();
+            file.Close();
+            List<Product>? result = JsonSerializer.Deserialize<List<Product>>(content);
+            return result ?? [];
+        }
+        else
+            return [];
     }
 
     public void SaveData(List<Product> products)
