@@ -1,4 +1,3 @@
-using ShoppingList.API.Service;
 using ShoppingList.API.DTO;
 using ShoppingList.API.Model;
 
@@ -11,12 +10,7 @@ builder.Services.AddCors();
 
 var app = builder.Build();
 
-FileService fileService = new () {
-    FilePath = builder.Configuration.GetValue("FilePath", "")
-};
-bool useFile = fileService.FilePath.Length > 0;
-
-List<Product> products = useFile ? fileService.LoadData() : [];
+List<Product> products = [];
 
 app.UseCors(builder => builder
     .AllowAnyOrigin()
@@ -33,8 +27,6 @@ app.MapPost("/products", (ProductDto newItemDto) => {
     Product newItem = newItemDto.ToProduct(newId);
 
     products.Add(newItem);
-    if (useFile)
-        fileService.SaveData(products);
 
     return Results.Created(string.Format("/products/{0}", newId), newItem);
 });
@@ -43,11 +35,7 @@ app.MapDelete("/products/{id}", (int id) => {
     Product? existingItem = products.Find(item => item.Id == id);
 
     if (existingItem != null)
-    {
         products.Remove(existingItem);
-        if (useFile)
-            fileService.SaveData(products);
-    }
     return (existingItem != null) ? Results.NoContent() : Results.NotFound();
 });
 
@@ -65,8 +53,6 @@ app.MapPut("/products/{id}", (int id, ProductDto itemDto) => {
         existingItem.Handled = itemDto.Handled;
         existingItem.Name = itemDto.Name;
         existingItem.Shop = itemDto.Shop;
-        if (useFile)
-            fileService.SaveData(products);
     }
 
     return (existingItem != null) ? Results.NoContent() : Results.NotFound();
