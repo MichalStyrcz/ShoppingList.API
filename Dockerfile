@@ -1,7 +1,7 @@
 FROM mcr.microsoft.com/dotnet/sdk:9.0 AS build
 WORKDIR /src
-COPY ShoppingList.API.csproj .
-RUN dotnet restore
+COPY ["ShoppingList.API/ShoppingList.API.csproj", "ShoppingList.API/"]
+RUN dotnet restore "ShoppingList.API/ShoppingList.API.csproj"
 COPY . .
 RUN dotnet publish -c release -o /app
 
