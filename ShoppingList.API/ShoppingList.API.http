@@ -1,6 +1,14 @@
 @ShoppingList.API_HostAddress = http://localhost:5082
 
-GET {{ShoppingList.API_HostAddress}}/weatherforecast/
+GET {{ShoppingList.API_HostAddress}}/products/
 Accept: application/json
 
 ###
+
+POST {{ShoppingList.API_HostAddress}}/products/
+Content-Type: application/json
+
+{
+  "name": "jajka",
+  "shop": "Lidl"
+}
