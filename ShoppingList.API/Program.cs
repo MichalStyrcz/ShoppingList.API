@@ -12,6 +12,7 @@ var app = builder.Build();
 
 List<Product> products = [];
 
+app.UseHttpsRedirection();
 app.UseCors(builder => builder
     .AllowAnyOrigin()
     .AllowAnyMethod()

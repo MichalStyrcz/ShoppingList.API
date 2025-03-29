@@ -1,4 +1,4 @@
-@ShoppingList.API_HostAddress = http://localhost:5082
+@ShoppingList.API_HostAddress = https://localhost:7135
 
 GET {{ShoppingList.API_HostAddress}}/products/
 Accept: application/json
