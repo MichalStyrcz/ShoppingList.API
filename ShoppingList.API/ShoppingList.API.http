@@ -12,3 +12,18 @@ Content-Type: application/json
   "name": "jajka",
   "shop": "Lidl"
 }
+
+###
+
+PUT {{ShoppingList.API_HostAddress}}/products/1
+Content-Type: application/json
+
+{
+  "name": "jajka",
+  "shop": "Lidl",
+  "handled": true
+}
+
+###
+
+DELETE {{ShoppingList.API_HostAddress}}/products/1
